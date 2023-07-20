@@ -5,8 +5,8 @@ namespace :dev do
       show_spinner("Apagando db...") { %x(rails db:drop) }
       show_spinner("Criando DB...") { %x(rails db:create) }
       show_spinner("Migrando DB...") { %x(rails db:migrate) }
-      %x(rails dev:add_coins)
       %x(rails dev:add_mining_types)
+      %x(rails dev:add_coins)
     else
       puts "Voce não está em ambiente de desenvolvimento"
     end
@@ -19,27 +19,32 @@ namespace :dev do
                   {
                   description: "Bitcoin",
                   acronym: "BTC",
-                  url_image: "https://w7.pngwing.com/pngs/450/133/png-transparent-bitcoin-cryptocurrency-virtual-currency-decal-blockchain-info-bitcoin-text-trademark-logo.png"
+                  url_image: "https://w7.pngwing.com/pngs/450/133/png-transparent-bitcoin-cryptocurrency-virtual-currency-decal-blockchain-info-bitcoin-text-trademark-logo.png",
+                  mining_type: MiningType.find_by(acronym: 'PoW')
                   },
                   {
                   description: "Ethereum",
                   acronym: "ETH",
-                  url_image: "https://w7.pngwing.com/pngs/368/176/png-transparent-ethereum-cryptocurrency-blockchain-bitcoin-logo-bitcoin-angle-triangle-logo-thumbnail.png"
+                  url_image: "https://w7.pngwing.com/pngs/368/176/png-transparent-ethereum-cryptocurrency-blockchain-bitcoin-logo-bitcoin-angle-triangle-logo-thumbnail.png",
+                  mining_type: MiningType.all.sample
                   },
                   {
                   description: "Dash",
                   acronym: "DASH",
-                  url_image: "https://ico-wiki.com/wp-content/uploads/2018/08/dash-coin-price.png"
+                  url_image: "https://ico-wiki.com/wp-content/uploads/2018/08/dash-coin-price.png",
+                  mining_type: MiningType.all.sample
                   },
                   {
                   description: "Iota",
                   acronym: "IOT",
-                  url_image: "https://w7.pngwing.com/pngs/800/691/png-transparent-iota-crypto-iota-logo-iota-coin-iota-symbol-iota-sign-iota-3d-icon-thumbnail.png"
+                  url_image: "https://w7.pngwing.com/pngs/800/691/png-transparent-iota-crypto-iota-logo-iota-coin-iota-symbol-iota-sign-iota-3d-icon-thumbnail.png",
+                  mining_type: MiningType.all.sample
                   },
                   {
                   description: "Zcash",
                   acronym: "ZEC",
-                  url_image: "https://e7.pngegg.com/pngimages/965/725/png-clipart-computer-icons-zcash-cryptocurrency-selecta-orange-number-thumbnail.png"
+                  url_image: "https://e7.pngegg.com/pngimages/965/725/png-clipart-computer-icons-zcash-cryptocurrency-selecta-orange-number-thumbnail.png",
+                  mining_type: MiningType.all.sample
                   }
               ]
 
